@@ -1,0 +1,11 @@
+version: '2'
+services:
+    steward-postgresql:
+        image: postgres:9.6.2
+        # volumes:
+        #     - ~/volumes/jhipster/steward/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=steward
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
