@@ -1,0 +1,24 @@
+{
+    "stewardApp": {
+        "history" : {
+            "home": {
+                "title": "Histories",
+                "createLabel": "Dodaj History",
+                "createOrEditLabel": "Dodaj lub edytuj: History"
+            },
+            "created": "Utworzono nowy History z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono History z identyfikatorem {{ param }}",
+            "deleted": "Usunięto History z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć History {{ id }}?"
+            },
+            "detail": {
+                "title": "History"
+            },
+            "entityId": "Entity Id",
+            "date": "Date",
+            "eventType": "Event Type",
+            "eventEntity": "Event Entity"
+        }
+    }
+}

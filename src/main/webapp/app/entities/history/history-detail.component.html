@@ -1,0 +1,37 @@
+
+<div *ngIf="history">
+    <h2><span jhiTranslate="stewardApp.history.detail.title">History</span> {{history.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stewardApp.history.entityId">Entity Id</span></dt>
+        <dd>
+            <span>{{history.entityId}}</span>
+        </dd>
+        <dt><span jhiTranslate="stewardApp.history.date">Date</span></dt>
+        <dd>
+            <span>{{history.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="stewardApp.history.eventType">Event Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'stewardApp.EventType.' + history.eventType}}">{{history.eventType}}</span>
+        </dd>
+        <dt><span jhiTranslate="stewardApp.history.eventEntity">Event Entity</span></dt>
+        <dd>
+            <span jhiTranslate="{{'stewardApp.EventEntity.' + history.eventEntity}}">{{history.eventEntity}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'history/'+ history.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

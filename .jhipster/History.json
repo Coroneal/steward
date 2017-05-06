@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "entityId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "eventType",
+            "fieldType": "EventType",
+            "fieldValues": "DEAL,ACCEPT_DEAL,PAYMENT"
+        },
+        {
+            "fieldName": "eventEntity",
+            "fieldType": "EventEntity",
+            "fieldValues": "MECHANIC,USER"
+        }
+    ],
+    "changelogDate": "20170506172523",
+    "entityTableName": "history",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

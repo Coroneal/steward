@@ -1,0 +1,9 @@
+{
+    "stewardApp": {
+        "EventEntity" : {
+            "null": "",
+            "MECHANIC": "MECHANIC",
+            "USER": "USER"
+        }
+    }
+}

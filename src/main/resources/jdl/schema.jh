@@ -1,0 +1,18 @@
+// edit at https://jhipster.github.io/jdl-studio/
+// generate entities from a JDL file using the import-jdl sub-generator, by running
+// yo jhipster:import-jdl ./src/main/resources/jdl/schema.jh
+
+entity History {
+    entityId Long required,
+	date ZonedDateTime required,
+    eventType EventType,
+    eventEntity EventEntity
+}
+
+enum EventType {
+    DEAL, ACCEPT_DEAL, PAYMENT
+}
+
+enum EventEntity {
+    MECHANIC, USER
+}

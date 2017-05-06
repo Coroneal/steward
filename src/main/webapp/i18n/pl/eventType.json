@@ -1,0 +1,10 @@
+{
+    "stewardApp": {
+        "EventType" : {
+            "null": "",
+            "DEAL": "DEAL",
+            "ACCEPT_DEAL": "ACCEPT_DEAL",
+            "PAYMENT": "PAYMENT"
+        }
+    }
+}
