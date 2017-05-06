@@ -41,6 +41,9 @@ public class History implements Serializable {
     @Column(name = "event_entity")
     private EventEntity eventEntity;
 
+    @Column(name = "reason")
+    private String reason;
+
     public Long getId() {
         return id;
     }
@@ -101,6 +104,19 @@ public class History implements Serializable {
         this.eventEntity = eventEntity;
     }
 
+    public String getReason() {
+        return reason;
+    }
+
+    public History reason(String reason) {
+        this.reason = reason;
+        return this;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -129,6 +145,7 @@ public class History implements Serializable {
             ", date='" + date + "'" +
             ", eventType='" + eventType + "'" +
             ", eventEntity='" + eventEntity + "'" +
+            ", reason='" + reason + "'" +
             '}';
     }
 }

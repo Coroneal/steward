@@ -56,6 +56,9 @@ public class HistoryResourceIntTest {
     private static final EventEntity DEFAULT_EVENT_ENTITY = EventEntity.MECHANIC;
     private static final EventEntity UPDATED_EVENT_ENTITY = EventEntity.USER;
 
+    private static final String DEFAULT_REASON = "AAAAAAAAAA";
+    private static final String UPDATED_REASON = "BBBBBBBBBB";
+
     @Autowired
     private HistoryRepository historyRepository;
 
@@ -96,7 +99,8 @@ public class HistoryResourceIntTest {
             .entityId(DEFAULT_ENTITY_ID)
             .date(DEFAULT_DATE)
             .eventType(DEFAULT_EVENT_TYPE)
-            .eventEntity(DEFAULT_EVENT_ENTITY);
+            .eventEntity(DEFAULT_EVENT_ENTITY)
+            .reason(DEFAULT_REASON);
         return history;
     }
 
@@ -124,6 +128,7 @@ public class HistoryResourceIntTest {
         assertThat(testHistory.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testHistory.getEventType()).isEqualTo(DEFAULT_EVENT_TYPE);
         assertThat(testHistory.getEventEntity()).isEqualTo(DEFAULT_EVENT_ENTITY);
+        assertThat(testHistory.getReason()).isEqualTo(DEFAULT_REASON);
     }
 
     @Test
@@ -195,7 +200,8 @@ public class HistoryResourceIntTest {
             .andExpect(jsonPath("$.[*].entityId").value(hasItem(DEFAULT_ENTITY_ID.intValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
             .andExpect(jsonPath("$.[*].eventType").value(hasItem(DEFAULT_EVENT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].eventEntity").value(hasItem(DEFAULT_EVENT_ENTITY.toString())));
+            .andExpect(jsonPath("$.[*].eventEntity").value(hasItem(DEFAULT_EVENT_ENTITY.toString())))
+            .andExpect(jsonPath("$.[*].reason").value(hasItem(DEFAULT_REASON.toString())));
     }
 
     @Test
@@ -212,7 +218,8 @@ public class HistoryResourceIntTest {
             .andExpect(jsonPath("$.entityId").value(DEFAULT_ENTITY_ID.intValue()))
             .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
             .andExpect(jsonPath("$.eventType").value(DEFAULT_EVENT_TYPE.toString()))
-            .andExpect(jsonPath("$.eventEntity").value(DEFAULT_EVENT_ENTITY.toString()));
+            .andExpect(jsonPath("$.eventEntity").value(DEFAULT_EVENT_ENTITY.toString()))
+            .andExpect(jsonPath("$.reason").value(DEFAULT_REASON.toString()));
     }
 
     @Test
@@ -236,7 +243,8 @@ public class HistoryResourceIntTest {
             .entityId(UPDATED_ENTITY_ID)
             .date(UPDATED_DATE)
             .eventType(UPDATED_EVENT_TYPE)
-            .eventEntity(UPDATED_EVENT_ENTITY);
+            .eventEntity(UPDATED_EVENT_ENTITY)
+            .reason(UPDATED_REASON);
 
         restHistoryMockMvc.perform(put("/api/histories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -251,6 +259,7 @@ public class HistoryResourceIntTest {
         assertThat(testHistory.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testHistory.getEventType()).isEqualTo(UPDATED_EVENT_TYPE);
         assertThat(testHistory.getEventEntity()).isEqualTo(UPDATED_EVENT_ENTITY);
+        assertThat(testHistory.getReason()).isEqualTo(UPDATED_REASON);
     }
 
     @Test

@@ -6,7 +6,8 @@ entity History {
     entityId Long required,
 	date ZonedDateTime required,
     eventType EventType,
-    eventEntity EventEntity
+    eventEntity EventEntity,
+    reason String
 }
 
 enum EventType {

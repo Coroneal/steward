@@ -18,7 +18,8 @@
             "entityId": "Entity Id",
             "date": "Date",
             "eventType": "Event Type",
-            "eventEntity": "Event Entity"
+            "eventEntity": "Event Entity",
+            "reason": "Reason"
         }
     }
 }

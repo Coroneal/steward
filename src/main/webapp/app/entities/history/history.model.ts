@@ -18,6 +18,7 @@ export class History {
         public date?: any,
         public eventType?: EventType,
         public eventEntity?: EventEntity,
+        public reason?: string,
     ) {
     }
 }

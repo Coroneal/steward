@@ -25,6 +25,10 @@
             "fieldName": "eventEntity",
             "fieldType": "EventEntity",
             "fieldValues": "MECHANIC,USER"
+        },
+        {
+            "fieldName": "reason",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170506172523",
