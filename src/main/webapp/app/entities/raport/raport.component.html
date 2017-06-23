@@ -1,0 +1,60 @@
+<div>
+    <h2>
+        <span jhiTranslate="stewardApp.raport.home.title">Raports</span>
+        <button class="btn btn-primary float-right create-raport" [routerLink]="['/', { outlets: { popup: ['raport-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="stewardApp.raport.home.createLabel">
+            Create new Raport
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="raports">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="stewardApp.raport.deal">Deal</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let raport of raports ;trackBy: trackId">
+                <td><a [routerLink]="['../raport', raport.id ]">{{raport.id}}</a></td>
+                <td>
+                    <div *ngIf="raport.deal">
+                        <a [routerLink]="['../deal', raport.deal?.id ]" >{{raport.deal?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../raport', raport.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'raport/'+ raport.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'raport/'+ raport.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

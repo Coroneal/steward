@@ -1,0 +1,33 @@
+
+<div *ngIf="deal">
+    <h2><span jhiTranslate="stewardApp.deal.detail.title">Deal</span> {{deal.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stewardApp.deal.mechanic">Mechanic</span></dt>
+        <dd>
+            <div *ngIf="deal.mechanic">
+                <a [routerLink]="['/mechanic', deal.mechanic?.id]">{{deal.mechanic?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="stewardApp.deal.buyer">Buyer</span></dt>
+        <dd>
+            <div *ngIf="deal.buyer">
+                <a [routerLink]="['/buyer', deal.buyer?.id]">{{deal.buyer?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'deal/'+ deal.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

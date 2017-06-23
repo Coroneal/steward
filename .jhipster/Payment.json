@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "deal",
+            "otherEntityName": "deal",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "payment"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170623121955",
+    "entityTableName": "payment",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

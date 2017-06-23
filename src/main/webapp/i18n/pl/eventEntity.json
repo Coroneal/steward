@@ -3,7 +3,7 @@
         "EventEntity" : {
             "null": "",
             "MECHANIC": "MECHANIC",
-            "USER": "USER"
+            "BUYER": "BUYER"
         }
     }
 }

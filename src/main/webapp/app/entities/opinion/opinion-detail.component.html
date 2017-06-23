@@ -1,0 +1,33 @@
+
+<div *ngIf="opinion">
+    <h2><span jhiTranslate="stewardApp.opinion.detail.title">Opinion</span> {{opinion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stewardApp.opinion.mechanic">Mechanic</span></dt>
+        <dd>
+            <div *ngIf="opinion.mechanic">
+                <a [routerLink]="['/mechanic', opinion.mechanic?.id]">{{opinion.mechanic?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="stewardApp.opinion.buyer">Buyer</span></dt>
+        <dd>
+            <div *ngIf="opinion.buyer">
+                <a [routerLink]="['/buyer', opinion.buyer?.id]">{{opinion.buyer?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'opinion/'+ opinion.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "deal",
+            "otherEntityName": "deal",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "raport"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170623121956",
+    "entityTableName": "raport",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

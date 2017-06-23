@@ -1,0 +1,21 @@
+{
+    "stewardApp": {
+        "raport" : {
+            "home": {
+                "title": "Raports",
+                "createLabel": "Dodaj Raport",
+                "createOrEditLabel": "Dodaj lub edytuj: Raport"
+            },
+            "created": "Utworzono nowy Raport z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Raport z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Raport z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Raport {{ id }}?"
+            },
+            "detail": {
+                "title": "Raport"
+            },
+            "deal": "Deal"
+        }
+    }
+}

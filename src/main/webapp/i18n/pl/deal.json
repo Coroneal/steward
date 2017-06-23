@@ -1,0 +1,22 @@
+{
+    "stewardApp": {
+        "deal" : {
+            "home": {
+                "title": "Deals",
+                "createLabel": "Dodaj Deal",
+                "createOrEditLabel": "Dodaj lub edytuj: Deal"
+            },
+            "created": "Utworzono nowy Deal z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Deal z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Deal z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Deal {{ id }}?"
+            },
+            "detail": {
+                "title": "Deal"
+            },
+            "mechanic": "Mechanic",
+            "buyer": "Buyer"
+        }
+    }
+}

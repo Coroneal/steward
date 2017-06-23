@@ -1,14 +1,12 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { History } from './history.model';
 import { HistoryService } from './history.service';
 @Injectable()
 export class HistoryPopupService {
     private isOpen = false;
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private historyService: HistoryService
@@ -23,8 +21,13 @@ export class HistoryPopupService {
 
         if (id) {
             this.historyService.find(id).subscribe((history) => {
-                history.date = this.datePipe
-                    .transform(history.date, 'yyyy-MM-ddThh:mm');
+                if (history.date) {
+                    history.date = {
+                        year: history.date.getFullYear(),
+                        month: history.date.getMonth() + 1,
+                        day: history.date.getDate()
+                    };
+                }
                 this.historyModalRef(component, history);
             });
         } else {

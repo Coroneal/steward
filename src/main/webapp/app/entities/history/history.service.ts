@@ -13,7 +13,8 @@ export class HistoryService {
 
     create(history: History): Observable<History> {
         const copy: History = Object.assign({}, history);
-        copy.date = this.dateUtils.toDate(history.date);
+        copy.date = this.dateUtils
+            .convertLocalDateToServer(history.date);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -21,8 +22,8 @@ export class HistoryService {
 
     update(history: History): Observable<History> {
         const copy: History = Object.assign({}, history);
-
-        copy.date = this.dateUtils.toDate(history.date);
+        copy.date = this.dateUtils
+            .convertLocalDateToServer(history.date);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -32,7 +33,7 @@ export class HistoryService {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             jsonResponse.date = this.dateUtils
-                .convertDateTimeFromServer(jsonResponse.date);
+                .convertLocalDateFromServer(jsonResponse.date);
             return jsonResponse;
         });
     }
@@ -52,7 +53,7 @@ export class HistoryService {
         const jsonResponse = res.json();
         for (let i = 0; i < jsonResponse.length; i++) {
             jsonResponse[i].date = this.dateUtils
-                .convertDateTimeFromServer(jsonResponse[i].date);
+                .convertLocalDateFromServer(jsonResponse[i].date);
         }
         res._body = jsonResponse;
         return res;

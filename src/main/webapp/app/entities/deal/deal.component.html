@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="stewardApp.deal.home.title">Deals</span>
+        <button class="btn btn-primary float-right create-deal" [routerLink]="['/', { outlets: { popup: ['deal-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="stewardApp.deal.home.createLabel">
+            Create new Deal
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="deals">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="stewardApp.deal.mechanic">Mechanic</span></th>
+            <th><span jhiTranslate="stewardApp.deal.buyer">Buyer</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let deal of deals ;trackBy: trackId">
+                <td><a [routerLink]="['../deal', deal.id ]">{{deal.id}}</a></td>
+                <td>
+                    <div *ngIf="deal.mechanic">
+                        <a [routerLink]="['../mechanic', deal.mechanic?.id ]" >{{deal.mechanic?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="deal.buyer">
+                        <a [routerLink]="['../buyer', deal.buyer?.id ]" >{{deal.buyer?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../deal', deal.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'deal/'+ deal.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'deal/'+ deal.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

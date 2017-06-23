@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "mechanic",
+            "otherEntityName": "mechanic",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "buyer",
+            "otherEntityName": "buyer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170623121954",
+    "entityTableName": "deal",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

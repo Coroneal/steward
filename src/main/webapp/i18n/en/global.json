@@ -8,6 +8,13 @@
             "entities": {
                 "main": "Entities",
                 "history": "History",
+                "opinion": "Opinion",
+                "message": "Message",
+                "deal": "Deal",
+                "payment": "Payment",
+                "raport": "Raport",
+                "mechanic": "Mechanic",
+                "buyer": "Buyer",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

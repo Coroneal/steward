@@ -1,0 +1,24 @@
+{
+    "stewardApp": {
+        "mechanic" : {
+            "home": {
+                "title": "Mechanics",
+                "createLabel": "Dodaj Mechanic",
+                "createOrEditLabel": "Dodaj lub edytuj: Mechanic"
+            },
+            "created": "Utworzono nowy Mechanic z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Mechanic z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Mechanic z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Mechanic {{ id }}?"
+            },
+            "detail": {
+                "title": "Mechanic"
+            },
+            "user": "User",
+            "opinion": "Opinion",
+            "message": "Message",
+            "deal": "Deal"
+        }
+    }
+}

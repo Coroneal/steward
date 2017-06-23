@@ -1,0 +1,21 @@
+{
+    "stewardApp": {
+        "payment" : {
+            "home": {
+                "title": "Payments",
+                "createLabel": "Dodaj Payment",
+                "createOrEditLabel": "Dodaj lub edytuj: Payment"
+            },
+            "created": "Utworzono nowy Payment z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Payment z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Payment z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "Payment"
+            },
+            "deal": "Deal"
+        }
+    }
+}

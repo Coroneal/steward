@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="stewardApp.message.home.title">Messages</span>
+        <button class="btn btn-primary float-right create-message" [routerLink]="['/', { outlets: { popup: ['message-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="stewardApp.message.home.createLabel">
+            Create new Message
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="messages">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="stewardApp.message.mechanic">Mechanic</span></th>
+            <th><span jhiTranslate="stewardApp.message.buyer">Buyer</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let message of messages ;trackBy: trackId">
+                <td><a [routerLink]="['../message', message.id ]">{{message.id}}</a></td>
+                <td>
+                    <div *ngIf="message.mechanic">
+                        <a [routerLink]="['../mechanic', message.mechanic?.id ]" >{{message.mechanic?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="message.buyer">
+                        <a [routerLink]="['../buyer', message.buyer?.id ]" >{{message.buyer?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../message', message.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'message/'+ message.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'message/'+ message.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

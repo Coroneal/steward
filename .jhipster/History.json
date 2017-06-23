@@ -3,15 +3,8 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "entityId",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "date",
-            "fieldType": "ZonedDateTime",
+            "fieldType": "LocalDate",
             "fieldValidateRules": [
                 "required"
             ]
@@ -19,15 +12,18 @@
         {
             "fieldName": "eventType",
             "fieldType": "EventType",
-            "fieldValues": "DEAL,ACCEPT_DEAL,PAYMENT"
+            "fieldValues": "DEAL,ACCEPT_DEAL,PAYMENT",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "eventEntity",
             "fieldType": "EventEntity",
-            "fieldValues": "MECHANIC,USER"
+            "fieldValues": "MECHANIC,BUYER"
         },
         {
-            "fieldName": "reason",
+            "fieldName": "description",
             "fieldType": "String"
         }
     ],

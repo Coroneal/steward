@@ -18,7 +18,7 @@ export class HistoryDialogComponent implements OnInit {
     history: History;
     authorities: any[];
     isSaving: boolean;
-    constructor(
+        constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,

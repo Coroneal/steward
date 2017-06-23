@@ -1,0 +1,33 @@
+
+<div *ngIf="message">
+    <h2><span jhiTranslate="stewardApp.message.detail.title">Message</span> {{message.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stewardApp.message.mechanic">Mechanic</span></dt>
+        <dd>
+            <div *ngIf="message.mechanic">
+                <a [routerLink]="['/mechanic', message.mechanic?.id]">{{message.mechanic?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="stewardApp.message.buyer">Buyer</span></dt>
+        <dd>
+            <div *ngIf="message.buyer">
+                <a [routerLink]="['/buyer', message.buyer?.id]">{{message.buyer?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'message/'+ message.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

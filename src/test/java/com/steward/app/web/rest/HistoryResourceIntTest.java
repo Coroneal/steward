@@ -21,13 +21,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.ZoneOffset;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-import static com.steward.app.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -44,20 +41,17 @@ import com.steward.app.domain.enumeration.EventEntity;
 @SpringBootTest(classes = StewardApp.class)
 public class HistoryResourceIntTest {
 
-    private static final Long DEFAULT_ENTITY_ID = 1L;
-    private static final Long UPDATED_ENTITY_ID = 2L;
-
-    private static final ZonedDateTime DEFAULT_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     private static final EventType DEFAULT_EVENT_TYPE = EventType.DEAL;
     private static final EventType UPDATED_EVENT_TYPE = EventType.ACCEPT_DEAL;
 
     private static final EventEntity DEFAULT_EVENT_ENTITY = EventEntity.MECHANIC;
-    private static final EventEntity UPDATED_EVENT_ENTITY = EventEntity.USER;
+    private static final EventEntity UPDATED_EVENT_ENTITY = EventEntity.BUYER;
 
-    private static final String DEFAULT_REASON = "AAAAAAAAAA";
-    private static final String UPDATED_REASON = "BBBBBBBBBB";
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     @Autowired
     private HistoryRepository historyRepository;
@@ -96,11 +90,10 @@ public class HistoryResourceIntTest {
      */
     public static History createEntity(EntityManager em) {
         History history = new History()
-            .entityId(DEFAULT_ENTITY_ID)
             .date(DEFAULT_DATE)
             .eventType(DEFAULT_EVENT_TYPE)
             .eventEntity(DEFAULT_EVENT_ENTITY)
-            .reason(DEFAULT_REASON);
+            .description(DEFAULT_DESCRIPTION);
         return history;
     }
 
@@ -124,11 +117,10 @@ public class HistoryResourceIntTest {
         List<History> historyList = historyRepository.findAll();
         assertThat(historyList).hasSize(databaseSizeBeforeCreate + 1);
         History testHistory = historyList.get(historyList.size() - 1);
-        assertThat(testHistory.getEntityId()).isEqualTo(DEFAULT_ENTITY_ID);
         assertThat(testHistory.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testHistory.getEventType()).isEqualTo(DEFAULT_EVENT_TYPE);
         assertThat(testHistory.getEventEntity()).isEqualTo(DEFAULT_EVENT_ENTITY);
-        assertThat(testHistory.getReason()).isEqualTo(DEFAULT_REASON);
+        assertThat(testHistory.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
     }
 
     @Test
@@ -152,10 +144,10 @@ public class HistoryResourceIntTest {
 
     @Test
     @Transactional
-    public void checkEntityIdIsRequired() throws Exception {
+    public void checkDateIsRequired() throws Exception {
         int databaseSizeBeforeTest = historyRepository.findAll().size();
         // set the field null
-        history.setEntityId(null);
+        history.setDate(null);
 
         // Create the History, which fails.
 
@@ -170,10 +162,10 @@ public class HistoryResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDateIsRequired() throws Exception {
+    public void checkEventTypeIsRequired() throws Exception {
         int databaseSizeBeforeTest = historyRepository.findAll().size();
         // set the field null
-        history.setDate(null);
+        history.setEventType(null);
 
         // Create the History, which fails.
 
@@ -197,11 +189,10 @@ public class HistoryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(history.getId().intValue())))
-            .andExpect(jsonPath("$.[*].entityId").value(hasItem(DEFAULT_ENTITY_ID.intValue())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].eventType").value(hasItem(DEFAULT_EVENT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].eventEntity").value(hasItem(DEFAULT_EVENT_ENTITY.toString())))
-            .andExpect(jsonPath("$.[*].reason").value(hasItem(DEFAULT_REASON.toString())));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
 
     @Test
@@ -215,11 +206,10 @@ public class HistoryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(history.getId().intValue()))
-            .andExpect(jsonPath("$.entityId").value(DEFAULT_ENTITY_ID.intValue()))
-            .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.eventType").value(DEFAULT_EVENT_TYPE.toString()))
             .andExpect(jsonPath("$.eventEntity").value(DEFAULT_EVENT_ENTITY.toString()))
-            .andExpect(jsonPath("$.reason").value(DEFAULT_REASON.toString()));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
 
     @Test
@@ -240,11 +230,10 @@ public class HistoryResourceIntTest {
         // Update the history
         History updatedHistory = historyRepository.findOne(history.getId());
         updatedHistory
-            .entityId(UPDATED_ENTITY_ID)
             .date(UPDATED_DATE)
             .eventType(UPDATED_EVENT_TYPE)
             .eventEntity(UPDATED_EVENT_ENTITY)
-            .reason(UPDATED_REASON);
+            .description(UPDATED_DESCRIPTION);
 
         restHistoryMockMvc.perform(put("/api/histories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -255,11 +244,10 @@ public class HistoryResourceIntTest {
         List<History> historyList = historyRepository.findAll();
         assertThat(historyList).hasSize(databaseSizeBeforeUpdate);
         History testHistory = historyList.get(historyList.size() - 1);
-        assertThat(testHistory.getEntityId()).isEqualTo(UPDATED_ENTITY_ID);
         assertThat(testHistory.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testHistory.getEventType()).isEqualTo(UPDATED_EVENT_TYPE);
         assertThat(testHistory.getEventEntity()).isEqualTo(UPDATED_EVENT_ENTITY);
-        assertThat(testHistory.getReason()).isEqualTo(UPDATED_REASON);
+        assertThat(testHistory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
     }
 
     @Test

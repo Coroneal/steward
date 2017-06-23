@@ -1,0 +1,24 @@
+{
+    "stewardApp": {
+        "buyer" : {
+            "home": {
+                "title": "Buyers",
+                "createLabel": "Dodaj Buyer",
+                "createOrEditLabel": "Dodaj lub edytuj: Buyer"
+            },
+            "created": "Utworzono nowy Buyer z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Buyer z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Buyer z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Buyer {{ id }}?"
+            },
+            "detail": {
+                "title": "Buyer"
+            },
+            "user": "User",
+            "opinion": "Opinion",
+            "message": "Message",
+            "deal": "Deal"
+        }
+    }
+}

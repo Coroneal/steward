@@ -13,57 +13,46 @@
                    [(ngModel)]="history.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="stewardApp.history.entityId" for="field_entityId">Entity Id</label>
-            <input type="number" class="form-control" name="entityId" id="field_entityId"
-                [(ngModel)]="history.entityId"
-            required />
-            <div [hidden]="!(editForm.controls.entityId?.dirty && editForm.controls.entityId?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.entityId?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.entityId?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="stewardApp.history.date" for="field_date">Date</label>
-            <div class="d-flex">
-                <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="history.date"
-                required  />
+            <div class="input-group">
+                <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="history.date"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
             </div>
             <div [hidden]="!(editForm.controls.date?.dirty && editForm.controls.date?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.date?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.date?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
-                    This field should be a date and time.
-                </small>
             </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="stewardApp.history.eventType" for="field_eventType">Event Type</label>
-            <select class="form-control" name="eventType" [(ngModel)]="history.eventType" id="field_eventType" >
+            <select class="form-control" name="eventType" [(ngModel)]="history.eventType" id="field_eventType"  required>
                 <option value="DEAL" jhiTranslate="stewardApp.EventType.DEAL">DEAL</option>
                 <option value="ACCEPT_DEAL" jhiTranslate="stewardApp.EventType.ACCEPT_DEAL">ACCEPT_DEAL</option>
                 <option value="PAYMENT" jhiTranslate="stewardApp.EventType.PAYMENT">PAYMENT</option>
             </select>
+            <div [hidden]="!(editForm.controls.eventType?.dirty && editForm.controls.eventType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.eventType?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="stewardApp.history.eventEntity" for="field_eventEntity">Event Entity</label>
             <select class="form-control" name="eventEntity" [(ngModel)]="history.eventEntity" id="field_eventEntity" >
                 <option value="MECHANIC" jhiTranslate="stewardApp.EventEntity.MECHANIC">MECHANIC</option>
-                <option value="USER" jhiTranslate="stewardApp.EventEntity.USER">USER</option>
+                <option value="BUYER" jhiTranslate="stewardApp.EventEntity.BUYER">BUYER</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="stewardApp.history.reason" for="field_reason">Reason</label>
-            <input type="text" class="form-control" name="reason" id="field_reason"
-                [(ngModel)]="history.reason"
+            <label class="form-control-label" jhiTranslate="stewardApp.history.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="history.description"
              />
         </div>
 

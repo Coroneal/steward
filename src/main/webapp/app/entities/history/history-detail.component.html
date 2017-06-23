@@ -4,13 +4,9 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="stewardApp.history.entityId">Entity Id</span></dt>
-        <dd>
-            <span>{{history.entityId}}</span>
-        </dd>
         <dt><span jhiTranslate="stewardApp.history.date">Date</span></dt>
         <dd>
-            <span>{{history.date | date:'medium'}}</span>
+            <span>{{history.date | date:'mediumDate'}}</span>
         </dd>
         <dt><span jhiTranslate="stewardApp.history.eventType">Event Type</span></dt>
         <dd>
@@ -20,9 +16,9 @@
         <dd>
             <span jhiTranslate="{{'stewardApp.EventEntity.' + history.eventEntity}}">{{history.eventEntity}}</span>
         </dd>
-        <dt><span jhiTranslate="stewardApp.history.reason">Reason</span></dt>
+        <dt><span jhiTranslate="stewardApp.history.description">Description</span></dt>
         <dd>
-            <span>{{history.reason}}</span>
+            <span>{{history.description}}</span>
         </dd>
     </dl>
 

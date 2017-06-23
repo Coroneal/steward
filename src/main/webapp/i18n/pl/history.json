@@ -15,11 +15,10 @@
             "detail": {
                 "title": "History"
             },
-            "entityId": "Entity Id",
             "date": "Date",
             "eventType": "Event Type",
             "eventEntity": "Event Entity",
-            "reason": "Reason"
+            "description": "Description"
         }
     }
 }

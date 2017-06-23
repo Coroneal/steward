@@ -1,0 +1,22 @@
+{
+    "stewardApp": {
+        "opinion" : {
+            "home": {
+                "title": "Opinions",
+                "createLabel": "Dodaj Opinion",
+                "createOrEditLabel": "Dodaj lub edytuj: Opinion"
+            },
+            "created": "Utworzono nowy Opinion z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Opinion z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Opinion z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Opinion {{ id }}?"
+            },
+            "detail": {
+                "title": "Opinion"
+            },
+            "mechanic": "Mechanic",
+            "buyer": "Buyer"
+        }
+    }
+}

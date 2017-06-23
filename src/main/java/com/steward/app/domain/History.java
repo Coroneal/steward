@@ -4,7 +4,7 @@ package com.steward.app.domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import com.steward.app.domain.enumeration.EventType;
@@ -26,23 +26,20 @@ public class History implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "entity_id", nullable = false)
-    private Long entityId;
+    @Column(name = "jhi_date", nullable = false)
+    private LocalDate date;
 
     @NotNull
-    @Column(name = "jhi_date", nullable = false)
-    private ZonedDateTime date;
-
     @Enumerated(EnumType.STRING)
-    @Column(name = "event_type")
+    @Column(name = "event_type", nullable = false)
     private EventType eventType;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "event_entity")
     private EventEntity eventEntity;
 
-    @Column(name = "reason")
-    private String reason;
+    @Column(name = "description")
+    private String description;
 
     public Long getId() {
         return id;
@@ -52,29 +49,16 @@ public class History implements Serializable {
         this.id = id;
     }
 
-    public Long getEntityId() {
-        return entityId;
-    }
-
-    public History entityId(Long entityId) {
-        this.entityId = entityId;
-        return this;
-    }
-
-    public void setEntityId(Long entityId) {
-        this.entityId = entityId;
-    }
-
-    public ZonedDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public History date(ZonedDateTime date) {
+    public History date(LocalDate date) {
         this.date = date;
         return this;
     }
 
-    public void setDate(ZonedDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -104,17 +88,17 @@ public class History implements Serializable {
         this.eventEntity = eventEntity;
     }
 
-    public String getReason() {
-        return reason;
+    public String getDescription() {
+        return description;
     }
 
-    public History reason(String reason) {
-        this.reason = reason;
+    public History description(String description) {
+        this.description = description;
         return this;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -141,11 +125,10 @@ public class History implements Serializable {
     public String toString() {
         return "History{" +
             "id=" + id +
-            ", entityId='" + entityId + "'" +
             ", date='" + date + "'" +
             ", eventType='" + eventType + "'" +
             ", eventEntity='" + eventEntity + "'" +
-            ", reason='" + reason + "'" +
+            ", description='" + description + "'" +
             '}';
     }
 }

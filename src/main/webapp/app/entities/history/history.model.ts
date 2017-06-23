@@ -8,17 +8,16 @@ const enum EventType {
 
 const enum EventEntity {
     'MECHANIC',
-    'USER'
+    'BUYER'
 
 };
 export class History {
     constructor(
         public id?: number,
-        public entityId?: number,
         public date?: any,
         public eventType?: EventType,
         public eventEntity?: EventEntity,
-        public reason?: string,
+        public description?: string,
     ) {
     }
 }
