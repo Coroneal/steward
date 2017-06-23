@@ -26,11 +26,10 @@ enum EventType {
 }
 
 entity History {
-    entityId Long required,
 	date LocalDate required,
-    eventType EventType,
+    eventType EventType required,
     eventEntity EventEntity,
-    reason String
+    description String
 }
 
 relationship OneToMany {
