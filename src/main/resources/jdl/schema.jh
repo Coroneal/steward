@@ -2,18 +2,49 @@
 // generate entities from a JDL file using the import-jdl sub-generator, by running
 // yo jhipster:import-jdl ./src/main/resources/jdl/schema.jh
 
-entity History {
-    entityId Long required,
-	date ZonedDateTime required,
-    eventType EventType,
-    eventEntity EventEntity,
-    reason String
+entity Opinion {
+}
+entity Message {
+}
+entity Deal {
+}
+entity Payment{
+}
+entity Raport{
+}
+entity Mechanic{
+}
+entity Buyer{
+}
+
+enum EventEntity {
+    MECHANIC, BUYER
 }
 
 enum EventType {
     DEAL, ACCEPT_DEAL, PAYMENT
 }
 
-enum EventEntity {
-    MECHANIC, USER
+entity History {
+    entityId Long required,
+	date LocalDate required,
+    eventType EventType,
+    eventEntity EventEntity,
+    reason String
+}
+
+relationship OneToMany {
+	Mechanic{opinion} to Opinion,
+    Buyer{opinion} to Opinion,
+    Mechanic{message} to Message,
+    Buyer{message} to Message,
+    Mechanic{deal} to Deal,
+    Buyer{deal} to Deal
+}
+
+relationship OneToOne {
+	Mechanic{user} to User,
+    Buyer{user} to User,
+    Payment{deal} to Deal,
+    Raport{deal} to Deal
 }
